@@ -1,6 +1,7 @@
 import { useState, useCallback, useMemo } from 'react';
 import ReactFlow, { Controls, Background, Node, Edge, applyEdgeChanges, applyNodeChanges, NodeChange, EdgeChange, addEdge, Connection } from 'reactflow';
 import 'reactflow/dist/style.css';
+import Sidebar from './components/system/SideBar';
 import TextUpdaterNode from './components/TextUpdaterNode';
 
 const initialNodes : Array<Node> = [
@@ -40,7 +41,8 @@ function App() {
   const nodeTypes = useMemo(() => ({ 'textUpdater' : TextUpdaterNode}), []);
 
   return (
-    <div className={'h-full'}>
+    <div className={'flex flex-row h-full'}>
+      <Sidebar />
       <ReactFlow 
         nodes={nodes} 
         edges={edges}
