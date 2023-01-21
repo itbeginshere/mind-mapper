@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import { VoidCallback } from '../@types/general';
 
-type UseToggleReturnType = [boolean, VoidCallback, VoidCallback, VoidCallback];
+type UseToggleReturnType = [boolean, VoidFunction, VoidFunction, VoidFunction];
 
 export const useToggle = (initialValue : boolean = false) : UseToggleReturnType => {
 
