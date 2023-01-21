@@ -4,21 +4,7 @@ import 'reactflow/dist/style.css';
 import Sidebar from './components/system/SideBar';
 import TextUpdaterNode from './components/TextUpdaterNode';
 
-const initialNodes : Array<Node> = [
-  {
-    id: '1', 
-    position: { x: 0, y: 0 },
-    data: { label: 'Hello' },
-    type: 'input',
-  }, 
-  {
-    id: '2',
-    position: { x: 100, y: 100 },
-    type: 'textUpdater',
-    data: { value: 'World' },
-  }
-]
-
+const initialNodes : Array<Node> = [];
 const initialEdges : Array<Edge> = [];
 
 function App() {

@@ -1,6 +1,8 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import { blockReducer } from './block/reducer';
+import { edgeReducer } from './edge/reducer';
+import { nodeReducer } from './node/reducer';
 
 export const rootReducer = combineReducers({
-    blockReducer,
+    nodeReducer,
+    edgeReducer,
 });
