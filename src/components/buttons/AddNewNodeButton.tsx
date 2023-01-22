@@ -1,14 +1,21 @@
+import React, { useState } from 'react';
 import { useToggle } from '../../hooks/useToggle.';
 import DialogActions from '../dialogs/DialogActions';
 import DialogContent from '../dialogs/DialogContent';
 import DialogHeader from '../dialogs/DialogHeader';
 import DialogWrapper from '../dialogs/DialogWrapper';
+import Textfield from '../inputs/Textfield';
 import PlusSVG from '../svgs/PlusSVG';
 import SaveSVG from '../svgs/SaveSVG';
 
 const AddNewNodeButton = () => {
     
     const [isDialogOpen, openDialog, closeDialog] = useToggle();
+    const [name, setName] = useState<string>('');
+
+    const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setName(event.target.value);
+    }
 
     return (
         <>
@@ -24,14 +31,7 @@ const AddNewNodeButton = () => {
             >
                 <DialogHeader title={'Add Node'} onClose={closeDialog}/>
                 <DialogContent>
-                    <div>display something really long to expand the dialog</div>
-                    <div>display something really long to expand the dialog</div>
-                    <div>display something really long to expand the dialog</div>
-                    <div>display something really long to expand the dialog</div>
-                    <div>display something really long to expand the dialog</div>
-                    <div>display something really long to expand the dialog</div>
-                    <div>display something really long to expand the dialog</div>
-                    <div>display something really long to expand the dialog</div>
+                    <Textfield value={name} onChange={onNameChange} />
                 </DialogContent>
                 <DialogActions>
                     <button className={'bg-cyan-300 p-2 rounded-md hover:shadow-lg'}>
