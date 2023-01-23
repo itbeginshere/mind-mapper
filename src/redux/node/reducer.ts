@@ -17,5 +17,7 @@ export const nodeReducer = createReducer(initialState, (builder) =>
         state.list = action.payload;
     }).addCase(NodeReduxActions.setIsLoading, (state, action) => {
         state.isLoading = action.payload;
+    }).addCase(NodeReduxActions.addNode, (state, action) => {
+        state.list.push(action.payload);
     })
 )
