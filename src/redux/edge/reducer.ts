@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { Edge } from 'reactflow';
+import { Edge, MarkerType } from 'reactflow';
 import { EdgeReduxActions } from '../edge/actions';
 
 interface IEdgeReduxState {
@@ -14,7 +14,15 @@ const initialState : IEdgeReduxState = {
 
 export const edgeReducer = createReducer(initialState, (builder) => 
     builder.addCase(EdgeReduxActions.setList, (state, action) => {
-        state.list = action.payload;
+        state.list = action.payload.map(edge => ({
+        ...edge,
+        markerEnd: {
+          type: MarkerType.ArrowClosed,
+          color: 'black',
+          width: 26, 
+          height: 26,
+        }
+      }));
     }).addCase(EdgeReduxActions.setIsLoading, (state, action) => {
         state.isLoading = action.payload;
     })

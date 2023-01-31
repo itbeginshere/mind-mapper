@@ -4,7 +4,7 @@ import 'reactflow/dist/style.css';
 import { EdgeReduxActions } from '../../redux/edge/actions';
 import { useAppSelector, useAppDispatch } from '../../redux/hooks';
 import { NodeReduxActions } from '../../redux/node/actions';
-import TextUpdaterNode from '../TextUpdaterNode';
+import CircleNode from '../nodes/CircleNode';
 
 function MainPlain() {
 
@@ -25,7 +25,7 @@ function MainPlain() {
       dispatch(EdgeReduxActions.setList(addEdge(params, edges))
   ), [edges]);
 
-  const nodeTypes = useMemo(() => ({ 'textUpdater' : TextUpdaterNode}), []);
+  const nodeTypes = useMemo(() => ({ 'circle' : CircleNode }), []);
 
   return (
       <ReactFlow 

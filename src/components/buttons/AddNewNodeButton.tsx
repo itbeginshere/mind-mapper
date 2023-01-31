@@ -11,6 +11,8 @@ import PlusSVG from '../svgs/PlusSVG';
 import SaveSVG from '../svgs/SaveSVG';
 import { v4 as uuidv4 } from 'uuid';
 import { STARTING_POSITION } from '../../constants';
+import { CustomNodeList, CustomNodes } from '../../@types/nodes';
+import Select from '../inputs/Select';
 
 const AddNewNodeButton = () => {
     
@@ -18,6 +20,7 @@ const AddNewNodeButton = () => {
 
     const [isDialogOpen, openDialog, closeDialog] = useToggle();
     const [name, setName] = useState<string>('');
+    const [type, setType] = useState<CustomNodes>('default');
 
     const onNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
@@ -26,6 +29,7 @@ const AddNewNodeButton = () => {
     const onAddNewNode = () => {
         dispatch(NodeReduxActions.addNode({
             id: uuidv4(),
+            type: type,
             data: {
                 label: name,
             },
@@ -33,6 +37,10 @@ const AddNewNodeButton = () => {
         }));
         setName('');
         closeDialog();
+    }
+
+    const onTypeChange = (event : React.ChangeEvent<HTMLSelectElement>) => {
+        setType(event.target.value as 'circle' | 'default');
     }
 
     return (
@@ -49,10 +57,17 @@ const AddNewNodeButton = () => {
             >
                 <DialogHeader title={'Add Node'} onClose={closeDialog}/>
                 <DialogContent>
-                    <Textfield 
-                        value={name} 
-                        onChange={onNameChange} 
-                    />
+                    <div className={'flex flex-col'}>
+                        <Textfield 
+                            value={name} 
+                            onChange={onNameChange} 
+                        />
+                        <Select 
+                            value={type}
+                            options={CustomNodeList}    
+                            onChange={onTypeChange}
+                        />
+                    </div>
                 </DialogContent>
                 <DialogActions>
                     <button 
