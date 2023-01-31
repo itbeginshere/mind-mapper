@@ -23,7 +23,7 @@ const Select = (props : ISelectProps) => {
     return (
         <select 
             defaultValue={value}
-            className={'p-1'}
+            className={'transition p-2 bg-gray-100 rounded-lg border-2 border-cyan-800 focus:border-cyan-300 active:border-cyan-300 hover:border-cyan-300 focus-visible:border-cyan-300 focus-within:border-cyan-300'}
             onChange={onChange}
         >
             {renderedOptions}

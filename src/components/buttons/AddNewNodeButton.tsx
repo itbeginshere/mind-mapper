@@ -57,7 +57,7 @@ const AddNewNodeButton = () => {
             >
                 <DialogHeader title={'Add Node'} onClose={closeDialog}/>
                 <DialogContent>
-                    <div className={'flex flex-col'}>
+                    <div className={'flex flex-col gap-2'}>
                         <Textfield 
                             value={name} 
                             onChange={onNameChange} 
